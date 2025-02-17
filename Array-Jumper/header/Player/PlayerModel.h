@@ -11,15 +11,14 @@ namespace Player
 	class PlayerModel
 	{
 	private: 
-			
 		PlayerState player_state;
 		int current_position;
 			
 	public:
-		PlayerState getPlayerState();
+		PlayerState getPlayerState() const;
 		void setPlayerState(PlayerState new_player_state);
 
-		int getCurrentPosition();
+		int getCurrentPosition() const;
 		void setCurrentPosition(int new_position);
 	};
 }
