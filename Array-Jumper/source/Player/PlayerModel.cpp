@@ -2,7 +2,7 @@
 
 namespace Player
 {
-	PlayerState PlayerModel::getPlayerState()
+	PlayerState PlayerModel::getPlayerState() const
 	{
 		return player_state;
 	}
@@ -12,7 +12,7 @@ namespace Player
 		player_state = new_player_state;
 	}
 
-	int PlayerModel::getCurrentPosition()
+	int PlayerModel::getCurrentPosition() const
 	{
 		return current_position;
 	}

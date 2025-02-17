@@ -2,8 +2,9 @@
 
 namespace Player
 {
-	PlayerView::PlayerView()
+	PlayerView::PlayerView(PlayerController* controller)
 	{
+		player_controller = controller;
 		game_window = nullptr;
 		player_image = new UI::UIElement::ImageView();
 	}
@@ -53,11 +54,16 @@ namespace Player
 
 	void PlayerView::update()
 	{
-		//Yet to implement
+		updatePlayerPosition();
 	}
 
 	void PlayerView::render()
 	{
-		//Yet to implement
+		switch (player_controller->getPlayerState())
+		{
+		case PlayerState::ALIVE:
+			drawPlayer();
+			break;
+		}
 	}
 }
