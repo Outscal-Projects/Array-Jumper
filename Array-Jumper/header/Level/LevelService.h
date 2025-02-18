@@ -1,4 +1,5 @@
 #pragma once
+#include "../../header/Level/LevelView.h"
 
 namespace Level
 {
@@ -13,6 +14,8 @@ namespace Level
 	public:
 		LevelService();
 		~LevelService();
+
+		BoxDimensions getBoxDimensions() const;
 
 		void intialize();
 		void update();

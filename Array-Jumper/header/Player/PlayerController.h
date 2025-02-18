@@ -17,11 +17,12 @@ namespace Player
 		PlayerController();
 		~PlayerController();
 
+		PlayerState getPlayerState();
+		void setPlayerState(PlayerState new_player_state);
+		int getCurrentPosition() const;
+
 		void initialize();
 		void update();
 		void render();
-
-		PlayerState getPlayerState();
-		void setPlayerState(PlayerState new_player_state);
 	};
 }

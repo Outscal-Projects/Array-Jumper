@@ -4,7 +4,6 @@
 namespace Level
 {
 	class LevelView;
-	class LevelModel;
 
 	class LevelController
 	{
@@ -17,7 +16,8 @@ namespace Level
 		LevelController();
 		~LevelController();
 
-		BlockType getCurrentBoxValue(int currentPosition);
+		BlockType getCurrentBoxValue(int currentPosition) const;
+		BoxDimensions getBoxDimensions() const;
 
 		void initialize();
 		void update();

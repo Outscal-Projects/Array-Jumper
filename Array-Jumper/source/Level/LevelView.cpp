@@ -1,13 +1,14 @@
 #include "../../header/Level/LevelView.h"
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Global/Config.h"
+#include <iostream>
+
+using namespace Global;
+using namespace UI::UIElement;
+using namespace Level;
 
 namespace Level
 {
-	using namespace Global;
-	using namespace UI::UIElement;
-	using namespace Level;
-
 	LevelView::LevelView(LevelController* controller)
 	{
 		game_window = nullptr;
@@ -15,10 +16,9 @@ namespace Level
 		createImages();
 	}
 
-	LevelView::~LevelView()
-	{
-		deleteImages();
-	}
+	LevelView::~LevelView() { deleteImages(); }
+
+	BoxDimensions LevelView::getBoxDimensions() const { return box_dimensions; }
 
 	void LevelView::initialize()
 	{
@@ -27,15 +27,9 @@ namespace Level
 		initializeImages();
 	}
 
-	void LevelView::update()
-	{
-		updateImages();
-	}
+	void LevelView::update() { updateImages(); }
 
-	void LevelView::render()
-	{
-		drawLevel();
-	}
+	void LevelView::render() { drawLevel(); }
 
 	void LevelView::createImages()
 	{
@@ -79,8 +73,10 @@ namespace Level
 	{
 		if (!game_window) return; //Return if there is no game window
 
+		std::cout << "Calculating box dimensions" << std::endl;
 		calculateBoxWidthHeight();
 		calculateBoxSpacing();
+		std::cout << "Calculated box dimensions: (" << box_dimensions.box_width << ", " << box_dimensions.box_height << ")" << std::endl; // Debug
 	}
 
 	void LevelView::calculateBoxWidthHeight()
@@ -99,6 +95,7 @@ namespace Level
 
 		box_dimensions.box_width = screenWidth / (totalSpace);
 		box_dimensions.box_height = box_dimensions.box_width;
+		std::cout << "Box dimensions: (" << box_dimensions.box_width << ", " << box_dimensions.box_height << ")" << std::endl; // Debug
 	}
 
 	ImageView* LevelView::getBoxOverlayImage(BlockType block_type)

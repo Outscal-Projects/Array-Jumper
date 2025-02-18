@@ -12,10 +12,12 @@ namespace Level
 
 	LevelController::~LevelController() {}
 
-	BlockType LevelController::getCurrentBoxValue(int currentPosition)
+	BlockType LevelController::getCurrentBoxValue(int currentPosition) const
 	{
 		return current_level_data.level_boxes[currentPosition];
 	}
+
+	BoxDimensions LevelController::getBoxDimensions() const{ return level_view->getBoxDimensions(); }
 
 	void LevelController::initialize()
 	{
