@@ -12,6 +12,11 @@ namespace Level
 
 	LevelController::~LevelController() {}
 
+	BlockType LevelController::getCurrentBoxValue(int currentPosition)
+	{
+		return current_level_data.level_boxes[currentPosition];
+	}
+
 	void LevelController::initialize()
 	{
 		level_view->initialize();
