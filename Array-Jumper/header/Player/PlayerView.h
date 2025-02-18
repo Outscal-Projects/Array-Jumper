@@ -4,6 +4,7 @@
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Player/PlayerModel.h"
 #include "../../header/Player/PlayerController.h"
+#include "../../header/Level/LevelView.h"
 
 using namespace Global;
 
@@ -16,6 +17,7 @@ namespace Player
 		sf::RenderWindow* game_window;
 		UI::UIElement::ImageView* player_image;
 
+		Level::BoxDimensions current_box_dimensions;
 		float player_height;
 		float player_width;
 

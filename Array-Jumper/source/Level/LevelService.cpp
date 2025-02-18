@@ -10,6 +10,8 @@ namespace Level
 
 	LevelService::~LevelService() { destroy(); }
 
+	BoxDimensions LevelService::getBoxDimensions() const { return level_controller->getBoxDimensions(); }
+
 	void LevelService::intialize()
 	{
 		level_controller->initialize();

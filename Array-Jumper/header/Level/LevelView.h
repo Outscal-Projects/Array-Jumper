@@ -41,6 +41,8 @@ namespace Level
 		LevelView(LevelController* controller);
 		~LevelView();
 
+		BoxDimensions getBoxDimensions() const;
+
 		void initialize();
 		void update();
 		void render();
