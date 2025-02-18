@@ -28,7 +28,10 @@ namespace Level
 		void initializeImages();
 		void updateImages();
 		void calculateBoxDimensions();
+		void calculateBoxWidthHeight();
 		ImageView* getBoxOverlayImage(BlockType block_type);
+		void calculateBoxSpacing();
+		sf::Vector2f calculateBoxPosition(int index);
 		void drawBox(sf::Vector2f position);
 		void drawBoxValue(sf::Vector2f position, BlockType box_value);
 		void drawLevel();
