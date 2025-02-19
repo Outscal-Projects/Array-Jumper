@@ -15,6 +15,7 @@ namespace Player
 		~PlayerService();
 
 		void takeDamage();
+		void levelComplete();
 
 		void initialize();
 		void update();

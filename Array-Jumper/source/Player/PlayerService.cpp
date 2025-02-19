@@ -9,6 +9,8 @@ namespace Player
 
 	void PlayerService::takeDamage() { player_controller->takeDamage(); }
 
+	void PlayerService::levelComplete() { player_controller->takeDamage(); }
+
 	void PlayerService::initialize() { player_controller->initialize(); }
 
 	void PlayerService::update() { player_controller->update(); }
