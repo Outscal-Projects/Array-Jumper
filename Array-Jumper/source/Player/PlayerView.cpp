@@ -1,5 +1,4 @@
 #include "../../header/Player/PlayerView.h"
-#include "iostream"
 
 namespace Player
 {
@@ -36,7 +35,6 @@ namespace Player
 		current_box_dimensions = ServiceLocator::getInstance()->getLevelService()->getBoxDimensions();
 		player_height = current_box_dimensions.box_height;
 		player_width = current_box_dimensions.box_width;
-		std::cout << "Player dimensions: (" << player_width << ", " << player_height << ")" << std::endl; // Debug
 	}
 
 	void PlayerView::initialize()

@@ -12,23 +12,13 @@ namespace Level
 
 	BoxDimensions LevelService::getBoxDimensions() const { return level_controller->getBoxDimensions(); }
 
-	void LevelService::intialize()
-	{
-		level_controller->initialize();
-	}
+	BlockType LevelService::getCurrentBoxValue(int currentPosition) const { return level_controller->getCurrentBoxValue(currentPosition); }
 
-	void LevelService::update()
-	{
-		level_controller->update();
-	}
+	void LevelService::intialize() { level_controller->initialize(); }
 
-	void LevelService::render()
-	{
-		level_controller->render();
-	}
+	void LevelService::update() { level_controller->update(); }
 
-	void LevelService::destroy()
-	{
-		delete(level_controller);
-	}
+	void LevelService::render() { level_controller->render(); }
+
+	void LevelService::destroy() { delete(level_controller); }
 }

@@ -16,6 +16,7 @@ namespace Level
 		~LevelService();
 
 		BoxDimensions getBoxDimensions() const;
+		BlockType getCurrentBoxValue(int current_position) const;
 
 		void intialize();
 		void update();
