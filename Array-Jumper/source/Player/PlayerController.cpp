@@ -1,6 +1,7 @@
 #include "../../header/Player/PlayerController.h"
 #include "../../header/Player/PlayerView.h"
 #include "../../header/Player/PlayerModel.h"
+#include "../../header/Gameplay/GameplayController.h"
 #include "../../header/Player/MovementDirection.h"
 #include "../../header/Level/BlockType.h"
 
@@ -10,6 +11,7 @@ namespace Player
 	{
 		player_model = new PlayerModel();
 		player_view = new PlayerView(this);
+		gameplay_controller = new Gameplay::GameplayController();
 		event_service = new Event::EventService();
 	}
 
@@ -19,6 +21,7 @@ namespace Player
 	{
 		//player_model->initialize();
 		player_view->initialize();
+		takeDamage();
 
 		event_service = ServiceLocator::getInstance()->getEventService();
 	}
@@ -29,25 +32,15 @@ namespace Player
 		readInput();
 	}
 
-	void PlayerController::render()
-	{
-		player_view->render();
-	}
+	void PlayerController::render() { player_view->render(); }
 
-	PlayerState PlayerController::getPlayerState()
-	{
-		return player_model->getPlayerState();
-	}
+	PlayerState PlayerController::getPlayerState() { return player_model->getPlayerState(); }
 
-	void PlayerController::setPlayerState(PlayerState new_player_state)
-	{
-		player_model->setPlayerState(new_player_state);
-	}
+	void PlayerController::setPlayerState(PlayerState new_player_state) { player_model->setPlayerState(new_player_state); }
 
-	int PlayerController::getCurrentPosition() const
-	{
-		return player_model->getCurrentPosition();
-	}
+	int PlayerController::getCurrentPosition() const { return player_model->getCurrentPosition(); }
+
+	void PlayerController::takeDamage() { player_model->resetPlayer(); }
 
 	void PlayerController::move(MovementDirection direction)
 	{
@@ -72,6 +65,7 @@ namespace Player
 
 		player_model->setCurrentPosition(targetPosition);
 		ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::MOVE);
+		gameplay_controller->onPositionChanged(targetPosition);
 	}
 
 	void PlayerController::jump(MovementDirection direction)
@@ -100,6 +94,7 @@ namespace Player
 
 		player_model->setCurrentPosition(targetPosition);
 		ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::JUMP);
+		gameplay_controller->onPositionChanged(targetPosition);
 	}
 
 	bool PlayerController::isPositionInBound(int targetPosition)
@@ -131,5 +126,6 @@ namespace Player
 	{
 		delete(player_model);
 		delete(player_view);
+		delete(gameplay_controller);
 	}
 }

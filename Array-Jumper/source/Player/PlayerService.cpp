@@ -7,20 +7,13 @@ namespace Player
 
 	PlayerService::~PlayerService() { destroy(); }
 
-	void PlayerService::initialize()
-	{
-		player_controller->initialize();
-	}
+	void PlayerService::takeDamage() { player_controller->takeDamage(); }
 
-	void PlayerService::update()
-	{
-		player_controller->update();
-	}
+	void PlayerService::initialize() { player_controller->initialize(); }
 
-	void PlayerService::render()
-	{
-		player_controller->render();
-	}
+	void PlayerService::update() { player_controller->update(); }
+
+	void PlayerService::render() { player_controller->render(); }
 
 	void PlayerService::destroy() { delete(player_controller); }
 }
