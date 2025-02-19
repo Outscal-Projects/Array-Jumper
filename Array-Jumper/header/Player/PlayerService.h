@@ -14,6 +14,8 @@ namespace Player
 		PlayerService();
 		~PlayerService();
 
+		void takeDamage();
+
 		void initialize();
 		void update();
 		void render();

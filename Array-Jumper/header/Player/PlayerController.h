@@ -1,5 +1,6 @@
 #pragma once
 #include "../../header/Event/EventService.h"
+#include "../../header/Gameplay/GameplayController.h"
 
 namespace Player
 {
@@ -13,6 +14,7 @@ namespace Player
 	private:
 		PlayerModel* player_model;
 		PlayerView* player_view;
+		Gameplay::GameplayController* gameplay_controller;
 		Event::EventService* event_service;
 
 		void destroy();
@@ -24,6 +26,7 @@ namespace Player
 		PlayerState getPlayerState();
 		void setPlayerState(PlayerState new_player_state);
 		int getCurrentPosition() const;
+		void takeDamage();
 		void move(MovementDirection direction);
 		void jump(MovementDirection direction);
 		bool isPositionInBound(int targetPosition);

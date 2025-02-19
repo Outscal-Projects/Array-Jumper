@@ -20,5 +20,6 @@ namespace Player
 
 		int getCurrentPosition() const;
 		void setCurrentPosition(int new_position);
+		void resetPlayer();
 	};
 }
