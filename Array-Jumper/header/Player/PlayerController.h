@@ -26,7 +26,9 @@ namespace Player
 		PlayerState getPlayerState();
 		void setPlayerState(PlayerState new_player_state);
 		int getCurrentPosition() const;
+		int getCurrentLives() const;
 		void takeDamage();
+		void onDeath();
 		void move(MovementDirection direction);
 		void jump(MovementDirection direction);
 		bool isPositionInBound(int targetPosition);

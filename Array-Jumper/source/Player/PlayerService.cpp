@@ -11,6 +11,8 @@ namespace Player
 
 	void PlayerService::levelComplete() { player_controller->takeDamage(); }
 
+	int PlayerService::getCurrentLives() const { return player_controller->getCurrentLives(); }
+
 	void PlayerService::initialize() { player_controller->initialize(); }
 
 	void PlayerService::update() { player_controller->update(); }

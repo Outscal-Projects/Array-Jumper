@@ -16,6 +16,7 @@ namespace Player
 
 		void takeDamage();
 		void levelComplete();
+		int getCurrentLives() const;
 
 		void initialize();
 		void update();
