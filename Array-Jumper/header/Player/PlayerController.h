@@ -29,6 +29,7 @@ namespace Player
 		int getCurrentLives() const;
 		void takeDamage();
 		void onDeath();
+		void resetPlayer();
 		void move(MovementDirection direction);
 		void jump(MovementDirection direction);
 		bool isPositionInBound(int targetPosition);

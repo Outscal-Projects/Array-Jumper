@@ -9,7 +9,7 @@ namespace Player
 
 	void PlayerService::takeDamage() { player_controller->takeDamage(); }
 
-	void PlayerService::levelComplete() { player_controller->takeDamage(); }
+	void PlayerService::levelComplete() { player_controller->resetPlayer(); }
 
 	int PlayerService::getCurrentLives() const { return player_controller->getCurrentLives(); }
 

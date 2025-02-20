@@ -16,6 +16,14 @@ namespace Level
 
 	BlockType LevelController::getCurrentBoxValue(int currentPosition) const { return level_model->getCurrentBoxValue(currentPosition); }
 
+	int LevelController::getCurrentLevelNumber() const { return level_model->getCurrentLevelNumber(); }
+
+	int LevelController::loadNextLevel() { return level_model->loadNextLevel(); }
+
+	bool LevelController::isLastLevel() { return level_model->isLastLevel(); }
+
+	void LevelController::resetLevelIndex() { level_model->resetLevelIndex(); }
+
 	void LevelController::initialize() { level_view->initialize(); }
 
 	void LevelController::update() { level_view->update(); }
