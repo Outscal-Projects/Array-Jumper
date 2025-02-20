@@ -9,6 +9,7 @@ namespace Gameplay
 		GameplayController* gameplay_controller;
 	public:
 		void onPositionChanged(int position);
+		void onDeath();
 
 		void initialize();
 		void update();
