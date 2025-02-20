@@ -17,6 +17,11 @@ namespace Level
 
 		BoxDimensions getBoxDimensions() const;
 		BlockType getCurrentBoxValue(int currentPosition) const;
+		int getCurrentLevelNumber() const;
+
+		int loadNextLevel();
+		bool isLastLevel();
+		void resetLevelIndex();
 
 		void initialize();
 		void update();
