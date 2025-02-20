@@ -11,8 +11,11 @@ namespace Gameplay
 		bool isEndBlock(Level::BlockType value);
 		void processEndBlock();
 		void onPositionChanged(int position);
+		bool isLastLevel();
+		void loadNextLevel();
 		void onDeath();
 		void gameOver();
+		void gameWon();
 
 		void initialize();
 		void update();

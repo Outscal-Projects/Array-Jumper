@@ -22,7 +22,11 @@ namespace Level
 
 	void LevelService::resetLevelIndex() { level_controller->resetLevelIndex(); }
 
-	void LevelService::intialize() { level_controller->initialize(); }
+	void LevelService::intialize()
+	{
+		level_controller->initialize();
+		resetLevelIndex();
+	}
 
 	void LevelService::update() { level_controller->update(); }
 

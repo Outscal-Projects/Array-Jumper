@@ -18,13 +18,29 @@ namespace UI
 
 		void GameplayUIController::initialize() { initializeTexts(); }
 
-		void GameplayUIController::update() { updateLifeCountText(); }
+		void GameplayUIController::update()
+		{
+			updateLifeCountText();
+			updateLevelCountText();
+		}
 
-		void GameplayUIController::render() { life_count_text->render(); }
+		void GameplayUIController::render()
+		{
+			life_count_text->render();
+			level_count_text->render();
+		}
 
-		void GameplayUIController::createTexts() { life_count_text = new TextView(); }
+		void GameplayUIController::createTexts()
+		{
+			life_count_text = new TextView();
+			level_count_text = new TextView();
+		}
 
-		void GameplayUIController::initializeTexts() { initializeLifeCountText(); }
+		void GameplayUIController::initializeTexts()
+		{
+			initializeLifeCountText();
+			initializeLevelCountText();
+		}
 
 		void GameplayUIController::initializeLifeCountText()
 		{
@@ -33,6 +49,15 @@ namespace UI
 			float y_position = top_offset;
 
 			life_count_text->initialize("0", sf::Vector2f(x_position, y_position), FontType::BUBBLE_BOBBLE, font_size, sf::Color::White);
+		}
+		
+		void GameplayUIController::initializeLevelCountText()
+		{
+			float windowWidth = ServiceLocator::getInstance()->getGraphicService()->getGameWindow()->getSize().x;
+			float x_position = left_offset;
+			float y_position = top_offset;
+
+			level_count_text->initialize("0", sf::Vector2f(x_position, y_position), FontType::BUBBLE_BOBBLE, font_size, sf::Color::White);
 		}
 
 		void GameplayUIController::updateLifeCountText()
@@ -44,7 +69,21 @@ namespace UI
 			life_count_text->setText(life_count_string);
 			life_count_text->update();
 		}
+		
+		void GameplayUIController::updateLevelCountText()
+		{
+			int level_count = ServiceLocator::getInstance()->getLevelService()->getCurrentLevelNumber();
 
-		void GameplayUIController::destroy() { delete(life_count_text); }
+			std::string level_count_string = "LEVEL: " + std::to_string(level_count);
+
+			level_count_text->setText(level_count_string);
+			level_count_text->update();
+		}
+
+		void GameplayUIController::destroy()
+		{
+			delete(life_count_text);
+			delete(level_count_text);
+		}
 	}
 }

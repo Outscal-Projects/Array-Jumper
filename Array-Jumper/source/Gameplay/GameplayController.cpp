@@ -1,6 +1,7 @@
 #include "../../header/Gameplay/GameplayController.h"
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Main/GameService.h"
+#include "iostream"
 
 namespace Gameplay
 {
@@ -29,6 +30,16 @@ namespace Gameplay
 		Global::ServiceLocator::getInstance()->getPlayerService()->levelComplete();
 		Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::LEVEL_COMPLETE);
 		Main::GameService::setGameState(Main::GameState::CREDITS);
+
+		if (isLastLevel())
+		{
+			std::cout << "Game Won";
+			gameWon();
+			return;
+		}
+
+		std::cout << "Loading next level";
+		loadNextLevel();
 	}
 
 	void GameplayController::onPositionChanged(int position)
@@ -41,12 +52,28 @@ namespace Gameplay
 			processEndBlock();
 	}
 
+	bool GameplayController::isLastLevel()
+	{
+		return Global::ServiceLocator::getInstance()->getLevelService()->isLastLevel();
+	}
+
+	void GameplayController::loadNextLevel()
+	{
+		Global::ServiceLocator::getInstance()->getLevelService()->loadNextLevel();
+	}
+
 	void GameplayController::onDeath() { gameOver(); }
 
 	void GameplayController::gameOver()
 	{
 		Main::GameService::setGameState(Main::GameState::CREDITS);
 		Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::DEATH);
+	}
+
+	void GameplayController::gameWon()
+	{
+		Main::GameService::setGameState(Main::GameState::CREDITS);
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::LEVEL_COMPLETE);
 	}
 
 	void GameplayController::initialize() {}
